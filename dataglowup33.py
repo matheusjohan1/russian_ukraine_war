@@ -235,7 +235,7 @@ with c7:
      color_map = ['lightsteelblue', 'lightslategrey', 'darkseagreen']
 
      # creating area chart
-     ax = sns.barplot(data=russian_control, x='month_year', y='% Ukraine occupied by Russia', palette=color_map)
+     ax = sns.barplot(data=russian_control, x='month_year', y='% Ukraine occupied by Russia', palette=color_map, hue='month_year')
 
      # adding values
      for container in ax.containers:
@@ -290,7 +290,7 @@ with c9:
      color_map = {'Rússia':'darkseagreen', 'Ucrânia':'lightslategrey'}
 
      # creating chart area
-     ax = sns.barplot(data=deaths.loc[deaths['type'] == 'military'], x='country', y='killed', palette=color_map)
+     ax = sns.barplot(data=deaths.loc[deaths['type'] == 'military'], x='country', y='killed', palette=color_map, hue='country')
      
      # adding values
      for container in ax.containers:
@@ -314,13 +314,14 @@ with c10:
      color_map = {'Rússia':'darkseagreen', 'Ucrânia':'lightslategrey'}
 
      # creating area chart
-     ax = sns.barplot(data=deaths.loc[deaths['type'] == 'military'], x='wounded', y='country', palette=color_map)
+     ax = sns.barplot(data=deaths.loc[deaths['type'] == 'military'], x='wounded', y='country', palette=color_map, hue='country')
 
      # adding values
      for container in ax.containers:
          ax.bar_label(container, color='w', padding=5)
 
      # updating layout and removing borders
+     plt.xticks(rotation=45)
      plt.xlabel('Número de Feridos', color='white', fontweight='bold')
      plt.ylabel('País', color='white', fontweight='bold')
      sns.despine(left=True)
@@ -338,7 +339,7 @@ with c11:
      color_map = {'Mortos':'tomato', 'Feridos':'lightcoral'}
 
      # creating area chart
-     ax = sns.barplot(data=uk_civilians, x='type', y='count', palette=color_map)
+     ax = sns.barplot(data=uk_civilians, x='type', y='count', palette=color_map, hue='type')
      
      # adding values
      for container in ax.containers:
